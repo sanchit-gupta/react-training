@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 250px;
+            background-color: #f4f4f4;
+			font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+	<div id="details"></div>
+    <div id="data"></div>
+    
+    <script>
+		let invocationCount = 0;
+		let instanceCount = 0;
+		
+		function countFunction() {
+			instanceCount++;
+			
+			function innerFunction() {
+				invocationCount++;
+			}
+			
+			return innerFunction;
+		}
+		
+		//No of instances
+		countFunction();
+		countFunction();
+		countFunction();
+		const myFunction = countFunction();
+		
+		//No of Invocation
+		myFunction();
+		myFunction();
+		myFunction();
+		
+		document.getElementById('details').innerHTML = "Printing the no of instances and invocation";
+		document.getElementById('data').innerHTML = "No of Instances: "+instanceCount+" and No of invocation: "+invocationCount;
+	</script>
+</body>
+</html>
